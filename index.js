@@ -10,15 +10,14 @@ function getUsersFromDatabase(array) {
   // Використовуємо метод `Array.from` для створення масиву користувачів зі списку, елементи якого це об'єкти які міститять
   // id який дорівнює id користувача,firstName який дорівнює firstName користувача в верхньому регістрі та years який дорівнює age користувача
   // Повертаємо масив користувачів
-    const arr1 = Array.from ( array,
-    function (element, index) {
-      element[index] = {id: this.id,
-      firstName: this.name,
-      years: this.age}
-    },
-    array,
-    );
-    return arr1;
+    const user = Array.from (array, (record) => {
+      return {
+      id: record.id,
+      firstName: record.name.toUpperCase(),
+      years: record.age};
+    });
+    
+    return user;
 }
 
 // Приклад використання функції getUsersFromDatabase
